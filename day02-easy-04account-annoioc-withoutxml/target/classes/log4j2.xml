@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Configuration status="INFO" strict="true" name="LogConfig">
+    <Properties>
+        <Property name="filepath">D:\logs</Property>
+    </Properties>
+    <Appenders>
+        <Console name="STDOUT" target="SYSTEM_OUT">
+            <PatternLayout>
+                <Pattern>%d %-5p [%t] %-17c{2} %3x - %m%n</Pattern>
+            </PatternLayout>
+        </Console>
+        <RollingFile name="logService"
+                     fileName="${filepath}/dp-qs.log"
+                     filePattern="${filepath}/dp-qs-%d{yy-MM-dd}.log.gz">
+            <PatternLayout>
+                <Pattern>%d %-5p [%t] %-17c{2} %3x - %m%n</Pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy modulate="true" interval="1"/>
+            </Policies>
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <Logger name="fileLogger" level="INFO" additivity="false">
+            <AppenderRef ref="logService"/>
+            <AppenderRef ref="STDOUT"/>
+        </Logger>
+
+        <Root level="INFO">
+         	<AppenderRef ref="STDOUT"/>
+            <AppenderRef ref="logService"/>
+        </Root>
+    </Loggers>
+
+</Configuration>

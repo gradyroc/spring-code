@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="day02_easy_anno_ioc" />
+        <module name="beans-instances" />
+        <module name="day02-easy-04account-annoioc-withoutxml" />
+        <module name="day02_easy_account_xmlioc" />
+        <module name="day02-easy-03account-annoioc" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="beans-instances" options="-parameters" />
+      <module name="day02-easy-03account-annoioc" options="-parameters" />
+      <module name="day02-easy-04account-annoioc-withoutxml" options="-parameters" />
+      <module name="day02-easy-annoioc" options="-parameters" />
+      <module name="day02_easy_account_xmlioc" options="-parameters" />
+      <module name="day02_easy_anno_ioc" options="-parameters" />
+    </option>
+  </component>
+</project>
