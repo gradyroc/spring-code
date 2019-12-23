@@ -20,7 +20,7 @@
         <!--<relativePath /> &lt;!&ndash; lookup parent from repository &ndash;&gt;-->
     </parent>
 
-    <groupId>cn.webank</groupId>
+    <groupId>cn.grady</groupId>
     <artifactId>day02-easy-annoioc</artifactId>
     <version>1.0-SNAPSHOT</version>
 

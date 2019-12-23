@@ -8,5 +8,5 @@
     xmlns:context="http://www.springframework.org/schema/context"
 
     -->
-    <context:component-scan base-package="cn.webank.cn.webank.daotest"></context:component-scan>
+    <context:component-scan base-package="cn.grady.cn.grady.daotest"></context:component-scan>
 </beans>

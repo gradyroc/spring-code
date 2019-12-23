@@ -5,11 +5,11 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 
-    <bean id ="accountService" class="cn.webank.service.impl.AccountServiceImpl">
+    <bean id ="accountService" class="cn.grady.service.impl.AccountServiceImpl">
         <!--需要注入dao对象-->
         <property name="accountDao" ref="accountDao"></property>
     </bean>
-    <bean id="accountDao" class="cn.webank.dao.impl.AccountDaoImpl">
+    <bean id="accountDao" class="cn.grady.dao.impl.AccountDaoImpl">
         <!--需要注入QueryRunner对象-->
         <property name="runner" ref="runner"></property>
     </bean>

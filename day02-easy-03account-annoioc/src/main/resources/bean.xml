@@ -10,7 +10,7 @@
 
 
     <!--    告知spring在创建容器时要扫描的包-->
-    <context:component-scan base-package="cn.webank"></context:component-scan>
+    <context:component-scan base-package="cn.grady"></context:component-scan>
 
     <!--配置QueryRunner-->
     <!--配成多例-->
