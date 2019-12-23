@@ -10,6 +10,7 @@
         <module>beans-instances</module>
         <module>day02-easy-03account-annoioc</module>
         <module>day02-easy-04account-annoioc-withoutxml</module>
+        <module>day03-easy-01account</module>
     </modules>
 
     <parent>

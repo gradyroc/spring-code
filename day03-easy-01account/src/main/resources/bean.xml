@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--suppress SpringFacetInspection -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <bean id ="accountService" class="cn.webank.service.impl.AccountServiceImpl">
+        <!--需要注入dao对象-->
+        <property name="accountDao" ref="accountDao"></property>
+    </bean>
+    <bean id="accountDao" class="cn.webank.dao.impl.AccountDaoImpl">
+        <!--需要注入QueryRunner对象-->
+        <property name="runner" ref="runner"></property>
+    </bean>
+    <!--配置QueryRunner-->
+    <!--配成多例-->
+    <bean id="runner" class="org.apache.commons.dbutils.QueryRunner" scope="prototype">
+        <constructor-arg name="ds" ref="dataSource"></constructor-arg>
+    </bean>
+
+    <!--配置数据源-->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <!--链接数据库的必备信息-->
+        <property name="driverClass" value="com.mysql.jdbc.Driver"></property>
+        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/easy"></property>
+        <property name="user" value="root"></property>
+        <property name="password" value="1234"></property>
+    </bean>
+
+</beans>

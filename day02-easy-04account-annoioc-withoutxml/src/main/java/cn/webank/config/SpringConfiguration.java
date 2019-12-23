@@ -24,7 +24,15 @@ import java.beans.PropertyVetoException;
  * 当使用注解配置方法时，如果方法有参数，spring去容器中查找有没有可用的bean对象
  * 查找方式的方式和Autowired注解的作用是一样的，
  *
+ *注解 Import
+ *      用于导入其他配置类
+ *   属性：value:指定其他配置类的字节码
+ *      当我们使用Import的注解之后，有Import注解的类就是父配置类，而导入的都是子配置类
  *
+ *
+ *注解： PropertySource:用于指定properties文件的位置
+ *      属性：value:用于指定文件的名称和路径
+ *          关键之：classpath：表是类路径
  */
 
 
@@ -32,35 +40,9 @@ import java.beans.PropertyVetoException;
 @Configuration
 @ComponentScan(basePackages = "cn.webank")
 //@ComponentScan("cn.webank")
+@Import(JdbcConfiguration.class)//导入其他配置类到主配置类，分配置文件的编写
+@PropertySource("classpath:jdbcConfig.properties")//可以指定resources下的路径
 public class SpringConfiguration {
 
-    //@Bean注解的作用，把当前方法的返回值作为bean对象，放入spring的ioc容器中==>等价于bean.xml
-    //  属性：name=指定bean的id，默认值是当前方法的名称,
-    @Bean(name = "runner")
-    public QueryRunner createQueryRunner(DataSource dataSource) {
-        return new QueryRunner(dataSource);
-    }
-
-    /**
-     * @Author: zhoup
-     * @Description: 创建DataSource
-     * @Params:
-     * @Date:
-     * @return:
-     */
-    @Bean(name = "dataSource")
-    @Scope("prototype")
-    public DataSource createDataSource() {
-
-        ComboPooledDataSource dataSource = new ComboPooledDataSource();
-        try {
-            dataSource.setDriverClass("com.mysql.jdbc.Driver");
-            dataSource.setJdbcUrl("jdbc:mysql://localhost:3306/easy");
-            dataSource.setUser("root");
-            dataSource.setPassword("1234");
-        } catch (PropertyVetoException e) {
-            throw new RuntimeException(e);
-        }
-        return dataSource;
-    }
+//   数据库链接的配置全部转移到JdbcConfiguration类中
 }
