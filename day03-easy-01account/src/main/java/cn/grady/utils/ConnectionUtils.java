@@ -23,7 +23,7 @@ public class ConnectionUtils {
 
     private DataSource dataSource;
 
-    public Connection getThreadConnection(){
+    public Connection getThreadConnection() {
         //1:先从ThreadLocal上获取
         Connection conn = tl.get();
 
@@ -36,25 +36,22 @@ public class ConnectionUtils {
             }
 
             //4:返回当前线程上的链接
-            return  conn;
-        }catch (Exception e){
+            return conn;
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+    /**
+     * @Author: zhoup
+     * @Description: 链接和线程解绑
+     * @Params:
+     * @Date:
+     * @return:
+     */
+    public void removeConnection() {
+        tl.remove();
+    }
 
 
 }

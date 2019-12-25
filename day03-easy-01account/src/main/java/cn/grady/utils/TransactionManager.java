@@ -20,13 +20,13 @@ public class TransactionManager {
     private ConnectionUtils connUtils;
 
     /**
-    *@Author: zhoup
-    *@Description:开启事务
-    *@Params:
-    *@Date:
-    *@return:
-    */
-    public void beginTransaction(){
+     * @Author: zhoup
+     * @Description:开启事务
+     * @Params:
+     * @Date:
+     * @return:
+     */
+    public void beginTransaction() {
         try {
             connUtils.getThreadConnection().setAutoCommit(false);
         } catch (SQLException e) {
@@ -35,13 +35,13 @@ public class TransactionManager {
     }
 
     /**
-     *@Author: zhoup
-     *@Description:提交事务
-     *@Params:
-     *@Date:
-     *@return:
+     * @Author: zhoup
+     * @Description:提交事务
+     * @Params:
+     * @Date:
+     * @return:
      */
-    public void commit(){
+    public void commit() {
         try {
             connUtils.getThreadConnection().commit();
         } catch (SQLException e) {
@@ -50,13 +50,13 @@ public class TransactionManager {
     }
 
     /**
-     *@Author: zhoup
-     *@Description:回滚事务
-     *@Params:
-     *@Date:
-     *@return:
+     * @Author: zhoup
+     * @Description:回滚事务
+     * @Params:
+     * @Date:
+     * @return:
      */
-    public void rollback(){
+    public void rollback() {
         try {
             connUtils.getThreadConnection().rollback();
         } catch (SQLException e) {
@@ -65,15 +65,16 @@ public class TransactionManager {
     }
 
     /**
-     *@Author: zhoup
-     *@Description:释放链接
-     *@Params:
-     *@Date:
-     *@return:
+     * @Author: zhoup
+     * @Description:释放链接
+     * @Params:
+     * @Date:
+     * @return:
      */
-    public void release(){
+    public void release() {
         try {
             connUtils.getThreadConnection().close();
+            connUtils.removeConnection();
         } catch (SQLException e) {
             e.printStackTrace();
         }
