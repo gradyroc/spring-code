@@ -5,9 +5,11 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 
-    <bean id ="accountService" class="cn.grady.service.impl.AccountServiceImpl">
+    <bean id="accountService" class="cn.grady.service.impl.AccountServiceImpl">
         <!--需要注入dao对象-->
         <property name="accountDao" ref="accountDao"></property>
+        <!--        注入事务管理器-->
+        <property name="txnManager" ref="txnManager"></property>
     </bean>
     <bean id="accountDao" class="cn.grady.dao.impl.AccountDaoImpl">
         <!--需要注入QueryRunner对象-->
@@ -16,7 +18,10 @@
     <!--配置QueryRunner-->
     <!--配成多例-->
     <bean id="runner" class="org.apache.commons.dbutils.QueryRunner" scope="prototype">
-        <constructor-arg name="ds" ref="dataSource"></constructor-arg>
+        <!--        选择不注入connection-->
+        <!--        <constructor-arg name="ds" ref="dataSource"></constructor-arg>-->
+        <!--        注入connectionUtils-->
+        <property name="connectionUtils" ref="connectionUtils"></property>
     </bean>
 
     <!--配置数据源-->
@@ -28,4 +33,16 @@
         <property name="password" value="1234"></property>
     </bean>
 
+
+    <!--   配置connection的工具类-->
+    <bean id="connectionUtils" class="cn.grady.utils.ConnectionUtils">
+        <!--        注入数据源-->
+        <property name="dataSource" ref="dataSource"></property>
+
+    </bean>
+    <!--        注入事务管理器-->
+    <bean id="txnManager" class="cn.grady.utils.TransactionManager">
+        <!--        注入connectionUtils-->
+        <property name="connectionUtils" ref="connectionUtils"></property>
+    </bean>
 </beans>
