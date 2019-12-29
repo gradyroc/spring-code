@@ -25,16 +25,20 @@
             <!--            <aop:before method="printLog"-->
             <!--                        pointcut="execution(* *..*.*(..))"></aop:before>-->
             <!--            前置通知 切入点方法执行之前-->
-            <aop:before method="beforePrintLog" pointcut="execution(* cn.grady.service.impl.*.*(..))"></aop:before>
+            <aop:before method="beforePrintLog" pointcut-ref="pt1"></aop:before>
             <!--            后置通知 切入点方法正常执行之后，它和异常通知永远只能执行一个-->
-            <aop:after-returning method="afterReturningPrintLog"
-                                 pointcut="execution(* cn.grady.service.impl.*.*(..))"></aop:after-returning>
+            <aop:after-returning method="afterReturningPrintLog" pointcut-ref="pt1"></aop:after-returning>
             <!--            异常通知 切入点方法执行产生异常之后， 它和后置通知永远只能执行一个-->
-            <aop:after-throwing method="afterThrowingPrintLog"
-                                pointcut="execution(* cn.grady.service.impl.*.*(..))"></aop:after-throwing>
+            <aop:after-throwing method="afterThrowingPrintLog" pointcut-ref="pt1"></aop:after-throwing>
             <!--            最终通知： 无论切入点方法是否正常执行，都会在其之后执行-->
-            <aop:after method="afterPrintLog" pointcut="execution(* cn.grady.service.impl.*.*(..))"></aop:after>
+            <aop:after method="afterPrintLog" pointcut-ref="pt1"></aop:after>
 
+            <!--            配置切入点表达式 id属性用于指定表达式的唯一标识，
+                               expression 属性用于指定表达式内容
+                               此标签鞋子aop：aspect标签内部，之恩给你当前切面使用。
+                               它还可以写在aop：aspect外面，此时就变成了所有切面可用，此时必须写在aop：aspect切面之前
+                                -->
+            <aop:pointcut id="pt1" expression="execution(* cn.grady.service.impl.*.*(..))"/>
         </aop:aspect>
     </aop:config>
 </beans>
