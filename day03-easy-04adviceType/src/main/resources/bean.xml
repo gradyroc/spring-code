@@ -18,6 +18,13 @@
 
     <!--    配置AOP-->
     <aop:config>
+        <!--            配置切入点表达式 id属性用于指定表达式的唯一标识，
+                              expression 属性用于指定表达式内容
+                              此标签鞋子aop：aspect标签内部，之恩给你当前切面使用。
+                              它还可以写在aop：aspect外面，此时就变成了所有切面可用，此时必须写在aop：aspect切面之前
+                               -->
+        <aop:pointcut id="pt1" expression="execution(* cn.grady.service.impl.*.*(..))"/>
+
         <!--        配置切面-->
         <aop:aspect id="logAdvice" ref="Logger">
             <!--     配置通知的类型，建立通知方法和切入点的关联-->
@@ -33,12 +40,7 @@
             <!--            最终通知： 无论切入点方法是否正常执行，都会在其之后执行-->
             <aop:after method="afterPrintLog" pointcut-ref="pt1"></aop:after>
 
-            <!--            配置切入点表达式 id属性用于指定表达式的唯一标识，
-                               expression 属性用于指定表达式内容
-                               此标签鞋子aop：aspect标签内部，之恩给你当前切面使用。
-                               它还可以写在aop：aspect外面，此时就变成了所有切面可用，此时必须写在aop：aspect切面之前
-                                -->
-            <aop:pointcut id="pt1" expression="execution(* cn.grady.service.impl.*.*(..))"/>
+
         </aop:aspect>
     </aop:config>
 </beans>
