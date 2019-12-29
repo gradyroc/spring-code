@@ -12,6 +12,7 @@
         <module>day02-easy-04account-annoioc-withoutxml</module>
         <module>day03-easy-01account</module>
         <module>day03-easy-02proxy</module>
+        <module>unit-test</module>
     </modules>
 
     <parent>

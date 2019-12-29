@@ -5,11 +5,23 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 
+    <!--    配置代理的service-->
+    <bean id="proxyAccountService" factory-bean="beanFactory" factory-method="getAccountService">
+
+    </bean>
+    <!--    配置beanfactory-->
+    <bean id="beanFactory" class="cn.grady.factory.BeanFactory">
+        <!--        注入service-->
+        <property name="accountService" ref="accountService"></property>
+        <!--        事务管理器-->
+        <property name="txnManager" ref="txnManager"></property>
+    </bean>
+
     <bean id="accountService" class="cn.grady.service.impl.AccountServiceImpl">
         <!--需要注入dao对象-->
         <property name="accountDao" ref="accountDao"></property>
         <!--        注入事务管理器-->
-        <property name="txnManager" ref="txnManager"></property>
+        <!--        <property name="txnManager" ref="txnManager"></property>-->
     </bean>
     <bean id="accountDao" class="cn.grady.dao.impl.AccountDaoImpl">
         <!--需要注入QueryRunner对象-->
