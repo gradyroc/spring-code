@@ -13,6 +13,8 @@
         <module>day03-easy-01account</module>
         <module>day03-easy-02proxy</module>
         <module>unit-test</module>
+        <module>day03-easy-03springAOP</module>
+        <module>day03-easy-04adviceType</module>
     </modules>
 
     <parent>
