@@ -35,7 +35,7 @@
                         * cn.grady.service.impl.AccountService.saveAccount()
                      包名可以使用通配符，表示任意包，但是有几级包，就需要写几个  *.
                      包名可以使用 .. 表示当前包及其子包
-                        * *..AccountServiceImpl.saveAccount()
+                        * *..AccountService.saveAccount()
                       类名和 方法名都可以用*来实现通配
                         * *...*()
                       参数列表：

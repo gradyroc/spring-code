@@ -41,6 +41,8 @@
             <aop:after method="afterPrintLog" pointcut-ref="pt1"></aop:after>
 
 
+            <!--            配置环绕通知,详细注释看Logger 类中-->
+            <aop:around method="arroundPrintLog" pointcut-ref="pt1"></aop:around>
         </aop:aspect>
     </aop:config>
 </beans>
