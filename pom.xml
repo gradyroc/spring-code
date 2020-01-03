@@ -15,6 +15,7 @@
         <module>unit-test</module>
         <module>day03-easy-03springAOP</module>
         <module>day03-easy-04adviceType</module>
+        <module>day03-easy-05annotationAOP</module>
     </modules>
 
     <parent>
