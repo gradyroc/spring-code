@@ -16,6 +16,7 @@
         <module>day03-easy-03springAOP</module>
         <module>day03-easy-04adviceType</module>
         <module>day03-easy-05annotationAOP</module>
+        <module>day04-easy-01jdbctemplate</module>
     </modules>
 
     <parent>
