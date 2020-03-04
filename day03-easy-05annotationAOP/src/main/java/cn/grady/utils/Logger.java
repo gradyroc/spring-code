@@ -26,7 +26,7 @@ public class Logger {
      * @Date:
      * @return:
      */
-    @Before("pt1()")
+//    @Before("pt1()")
     public void beforePrintLog() {
         System.out.println("前置通知 record the logs");
     }
@@ -38,7 +38,7 @@ public class Logger {
      * @Date:
      * @return:
      */
-    @AfterReturning("pt1()")
+//    @AfterReturning("pt1()")
     public void afterReturningPrintLog() {
         System.out.println("后置通知 record the logs");
     }
@@ -50,7 +50,7 @@ public class Logger {
      * @Date:
      * @return:
      */
-    @AfterThrowing("pt1()")
+//    @AfterThrowing("pt1()")
     public void afterThrowingPrintLog() {
         System.out.println("异常通知 record the logs");
     }
@@ -62,7 +62,7 @@ public class Logger {
      * @Date:
      * @return:
      */
-    @After("pt1()")
+//    @After("pt1()")
     public void afterPrintLog() {
         System.out.println("最终通知 afterPrintLog record the logs");
     }
@@ -84,7 +84,7 @@ public class Logger {
      * @Date:
      * @return:
      */
-//    @Around("pt1()")
+    @Around("pt1()")
     public Object arroundPrintLog(ProceedingJoinPoint joinPoint) {
 
         Object result = null;
@@ -100,6 +100,7 @@ public class Logger {
         } catch (Throwable throwable) {
 //            throwable.printStackTrace();
             System.out.println("异常通知 afterPrintLog record the logs");
+
             throw new RuntimeException(throwable);
         }finally {
             System.out.println("最终通知 afterPrintLog record the logs");

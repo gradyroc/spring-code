@@ -57,4 +57,6 @@ public interface IAccountService {
     */
     void deleteAccount(Integer accountID);
 
+    void transfer(Account a,Account b,Float money);
+
 }

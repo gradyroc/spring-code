@@ -1,5 +1,7 @@
 package cn.grady.jdbctemplate;
 
+import cn.grady.domain.Account;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 /**
@@ -13,5 +15,6 @@ public class JdbcTemplateDemo1 {
         JdbcTemplate jt = new JdbcTemplate();
 
         jt.execute("insert into account(name,money) values('ccc',1000)");
+        jt.query("select * from account where money > ?",new BeanPropertyRowMapper<Account>(Account.class),1000f);
     }
 }

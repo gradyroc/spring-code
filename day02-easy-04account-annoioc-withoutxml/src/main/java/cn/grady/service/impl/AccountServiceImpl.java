@@ -53,4 +53,9 @@ public class AccountServiceImpl implements IAccountService {
     public void deleteAccount(Integer accountID) {
         accountDao.deleteAccount(accountID);
     }
+
+    @Override
+    public void transfer(Account a, Account b, Float money) {
+
+    }
 }
